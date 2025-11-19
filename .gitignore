@@ -37,3 +37,4 @@ logs/
 # Другие файлы сборки
 out/
 build/
+.allure/
