@@ -2,7 +2,7 @@ package tests;
 
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
-import jdk.jfr.Description;
+import io.qameta.allure.Description;
 import org.junit.Test;
 import steps.OrderSteps;
 import static org.hamcrest.Matchers.*;

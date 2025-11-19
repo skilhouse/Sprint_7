@@ -5,10 +5,9 @@ import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.json.JSONObject;
+import static config.Config.*;
 
 public class CourierSteps {
-
-    private static final String BASE_URL = "https://qa-scooter.praktikum-services.ru";
 
     public CourierSteps() {
         RestAssured.baseURI = BASE_URL;
@@ -26,7 +25,7 @@ public class CourierSteps {
                 .header("Content-type", "application/json")
                 .body(requestBody.toString())
                 .when()
-                .post("/api/v1/courier");
+                .post(COURIER_API);
     }
 
     @Step("Логин курьера с логином: {login} и паролем: {password}")
@@ -39,7 +38,7 @@ public class CourierSteps {
                 .header("Content-type", "application/json")
                 .body(requestBody.toString())
                 .when()
-                .post("/api/v1/courier/login");
+                .post(COURIER_LOGIN_API);
     }
 
     @Step("Удалить курьера с ID: {courierId}")
@@ -47,7 +46,7 @@ public class CourierSteps {
         if (courierId != null && !courierId.isEmpty()) {
             RestAssured.given()
                     .when()
-                    .delete("/api/v1/courier/" + courierId);
+                    .delete(COURIER_API + "/" + courierId);
         }
     }
 

@@ -5,10 +5,9 @@ import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.json.JSONObject;
+import static config.Config.*;
 
 public class OrderSteps {
-
-    private static final String BASE_URL = "https://qa-scooter.praktikum-services.ru";
 
     public OrderSteps() {
         RestAssured.baseURI = BASE_URL;
@@ -35,13 +34,13 @@ public class OrderSteps {
                 .header("Content-type", "application/json")
                 .body(requestBody.toString())
                 .when()
-                .post("/api/v1/orders");
+                .post(ORDERS_API);
     }
 
     @Step("Получить список заказов")
     public Response getOrderList() {
         return RestAssured.given()
                 .when()
-                .get("/api/v1/orders");
+                .get(ORDERS_API);
     }
 }
